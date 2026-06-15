@@ -20,8 +20,8 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import com.runningpig66.coursecompose.practice.C33B
-import com.runningpig66.coursecompose.ui.theme.CourseComposeAnimateAsStateTheme
+import com.runningpig66.coursecompose.practice.C35
+import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
 import kotlinx.serialization.Serializable
 
@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            CourseComposeAnimateAsStateTheme {
+            CourseComposeTheme {
                 AnimationShowcaseApp()
             }
         }
@@ -102,7 +102,7 @@ fun AnimationShowcaseApp() {
         backStack = backStack,
         entryProvider = entryProvider {
             entry<Route.Home> { HomeIndexScreen { route -> backStack.add(route) } }
-            entry<Route.PracticeDemo> { C33B() }
+            entry<Route.PracticeDemo> { C35() }
             entry<Route.TweenDemo> { TweenEasingRaceDemo() }
             entry<Route.SnapDemo> { SnapDegradeDemo() }
             entry<Route.KeyframesDemo> { KeyframesShakeDemo() }
@@ -142,7 +142,7 @@ fun HomeIndexScreen(onNavigateTo: (Route) -> Unit) {
 @PhonePreviews
 @Composable
 fun HomeIndexScreenPreview() {
-    CourseComposeAnimateAsStateTheme {
+    CourseComposeTheme {
         AnimationShowcaseApp()
     }
 }

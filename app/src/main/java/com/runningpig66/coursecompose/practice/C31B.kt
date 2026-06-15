@@ -32,7 +32,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.runningpig66.coursecompose.ui.theme.CourseComposeAnimateAsStateTheme
+import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
 
 /**
@@ -40,7 +40,7 @@ import com.runningpig66.coursecompose.ui.utils.PhonePreviews
  * @date 2026-06-11
  * @time 23:07
  *
- * 31. Transition-延伸：AnimatedVisibility() 实践练习
+ * 31. Transition 延伸：AnimatedVisibility() 实践练习
  *
  * 本文件展示了如何将 AnimatedVisibility 融入到单例枚举状态机中。同时通过留存的测试代码，
  * 记录了布局阶段修改尺寸与绘制阶段图形缩放的本质区别，以及 AnimatedVisibility 作为组件生命周期管理器的核心价值。
@@ -164,7 +164,7 @@ fun C31B() {
 @PhonePreviews
 @Composable
 fun C31BPreview() {
-    CourseComposeAnimateAsStateTheme {
+    CourseComposeTheme {
         C31B()
     }
 }

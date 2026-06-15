@@ -24,7 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.runningpig66.coursecompose.ui.theme.CourseComposeAnimateAsStateTheme
+import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
 
 /**
@@ -32,7 +32,7 @@ import com.runningpig66.coursecompose.ui.utils.PhonePreviews
  * @date 2026-06-11
  * @time 2:59
  *
- * 31. Transition-延伸：AnimatedVisibility() 基础 API 练习
+ * 31. Transition 延伸：AnimatedVisibility() 基础 API 练习
  *
  * 1. AnimatedVisibility 并非单纯的视觉动画封装，而是一个“带有动画缓冲区的组件挂载/卸载管理器”。
  * 当 visible 为 false 且出场动画播放完毕后，它会将内部组件彻底从 Compose UI 树上移除，释放内存与布局开销。
@@ -120,7 +120,7 @@ fun TransitionSquare() {
 @PhonePreviews
 @Composable
 fun C31APreview() {
-    CourseComposeAnimateAsStateTheme {
+    CourseComposeTheme {
         C31A()
     }
 }

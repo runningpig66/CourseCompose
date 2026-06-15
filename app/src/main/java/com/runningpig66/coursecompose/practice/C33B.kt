@@ -37,7 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.runningpig66.coursecompose.ui.theme.CourseComposeAnimateAsStateTheme
+import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
 
 /**
@@ -45,7 +45,7 @@ import com.runningpig66.coursecompose.ui.utils.PhonePreviews
  * @date 2026-06-15
  * @time 0:53
  *
- * 33. Transition-延伸：AnimatedContent() 练习
+ * 33. Transition 延伸：AnimatedContent() 练习
  *
  * 本类演示了如何使用 AnimatedContent 实现多步骤表单的局部切换。
  * 通过监听 currentStep 状态的改变，在高度不同的子组件之间进行过渡。
@@ -233,7 +233,7 @@ private fun StepThreeContent() {
 @PhonePreviews
 @Composable
 fun C33BPreview() {
-    CourseComposeAnimateAsStateTheme {
+    CourseComposeTheme {
         C33B()
     }
 }

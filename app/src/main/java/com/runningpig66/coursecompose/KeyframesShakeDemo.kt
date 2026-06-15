@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.runningpig66.coursecompose.ui.theme.CourseComposeAnimateAsStateTheme
+import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
 import kotlinx.coroutines.delay
 
@@ -116,7 +116,7 @@ fun PasswordVerifyButton(modifier: Modifier = Modifier) {
 @PhonePreviews
 @Composable
 fun KeyframesShakePreview() {
-    CourseComposeAnimateAsStateTheme {
+    CourseComposeTheme {
         KeyframesShakeDemo()
     }
 }

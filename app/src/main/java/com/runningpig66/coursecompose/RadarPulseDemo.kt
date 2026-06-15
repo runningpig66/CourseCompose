@@ -20,7 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
-import com.runningpig66.coursecompose.ui.theme.CourseComposeAnimateAsStateTheme
+import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
 
 /**
@@ -104,7 +104,7 @@ fun RadarPulseBoard() {
 @PhonePreviews
 @Composable
 fun RadarPulseDemoPreview() {
-    CourseComposeAnimateAsStateTheme {
+    CourseComposeTheme {
         RadarPulseDemo()
     }
 }

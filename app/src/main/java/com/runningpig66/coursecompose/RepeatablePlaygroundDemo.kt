@@ -34,7 +34,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.runningpig66.coursecompose.ui.theme.CourseComposeAnimateAsStateTheme
+import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
 import kotlinx.coroutines.launch
 
@@ -214,7 +214,7 @@ fun RepeatableTrack(
 @PhonePreviews
 @Composable
 fun RepeatablePlaygroundDemoPreview() {
-    CourseComposeAnimateAsStateTheme {
+    CourseComposeTheme {
         RepeatablePlaygroundDemo()
     }
 }

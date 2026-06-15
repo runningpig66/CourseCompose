@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.NavDisplay
-import com.runningpig66.coursecompose.ui.theme.CourseComposeAnimateAsStateTheme
+import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
 
 // Define keys that will identify content
@@ -131,7 +131,7 @@ fun ContentBlue(
 @PhonePreviews
 @Composable
 fun ContentGreenPreview() {
-    CourseComposeAnimateAsStateTheme {
+    CourseComposeTheme {
         ContentGreen("Welcome to Nav3") {}
     }
 }
@@ -139,7 +139,7 @@ fun ContentGreenPreview() {
 @PhonePreviews
 @Composable
 fun ContentBluePreview() {
-    CourseComposeAnimateAsStateTheme {
+    CourseComposeTheme {
         ContentBlue("Product 123") {}
     }
 }

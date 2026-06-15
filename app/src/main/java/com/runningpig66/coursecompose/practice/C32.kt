@@ -21,7 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.runningpig66.coursecompose.ui.theme.CourseComposeAnimateAsStateTheme
+import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
 
 /**
@@ -29,7 +29,7 @@ import com.runningpig66.coursecompose.ui.utils.PhonePreviews
  * @date 2026-06-12
  * @time 1:45
  *
- * 32. Transition-延伸：Crossfade() 交叉淡入淡出
+ * 32. Transition 延伸：Crossfade() 交叉淡入淡出
  *
  * 本文件记录了 Crossfade 的底层特性与尺寸跳变陷阱。
  * 它的核心职责非常单一：仅通过改变 Alpha 透明度来实现新旧组件的交替，底层绝对不会进行任何关于尺寸差异的平滑过渡计算。
@@ -83,7 +83,7 @@ fun C32() {
 @PhonePreviews
 @Composable
 fun C32Preview() {
-    CourseComposeAnimateAsStateTheme {
+    CourseComposeTheme {
         C32()
     }
 }

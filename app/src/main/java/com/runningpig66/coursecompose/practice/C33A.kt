@@ -26,7 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.runningpig66.coursecompose.ui.theme.CourseComposeAnimateAsStateTheme
+import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
 
 /**
@@ -34,7 +34,7 @@ import com.runningpig66.coursecompose.ui.utils.PhonePreviews
  * @date 2026-06-12
  * @time 3:12
  *
- * 33. Transition-延伸：AnimatedContent() 基础 API
+ * 33. Transition 延伸：AnimatedContent() 基础 API
  *
  * 1. 作用定位：AnimatedContent 用于在不同的 Composable 之间进行状态切换，并提供完整的转场动画支持。
  * 2. 核心参数：transitionSpec。该参数接收一个 Lambda，其运行在 AnimatedContentTransitionScope 作用域中，
@@ -103,7 +103,7 @@ fun C33A() {
 @PhonePreviews
 @Composable
 fun C33APreview() {
-    CourseComposeAnimateAsStateTheme {
+    CourseComposeTheme {
         C33A()
     }
 }

@@ -87,7 +87,7 @@ private val darkScheme = darkColorScheme(
 )
 
 @Composable
-fun CourseComposeAnimateAsStateTheme(
+fun CourseComposeTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = false,

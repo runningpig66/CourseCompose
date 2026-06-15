@@ -23,7 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.runningpig66.coursecompose.ui.theme.CourseComposeAnimateAsStateTheme
+import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
 import kotlinx.coroutines.delay
 import kotlin.time.Duration.Companion.milliseconds
@@ -33,7 +33,7 @@ import kotlin.time.Duration.Companion.milliseconds
  * @date 2026-06-06
  * @time 17:00
  *
- * 27. 消散型动画-AnimateDecay()
+ * 27. 消散型动画 AnimateDecay()
  *
  * DecayAnimationSpec 衰减动画
  * AnimateDecay()
@@ -96,7 +96,7 @@ fun C27() {
 @PhonePreviews
 @Composable
 fun C27Preview() {
-    CourseComposeAnimateAsStateTheme {
+    CourseComposeTheme {
         C27()
     }
 }

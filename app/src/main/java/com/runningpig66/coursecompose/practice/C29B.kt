@@ -31,7 +31,7 @@ import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
-import com.runningpig66.coursecompose.ui.theme.CourseComposeAnimateAsStateTheme
+import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
 import kotlinx.coroutines.launch
 
@@ -40,7 +40,7 @@ import kotlinx.coroutines.launch
  * @date 2026-06-09
  * @time 1:24
  *
- * Compose 渲染三阶段与状态延迟读取 (性能优化实战)
+ * 29. 打断施法：动画的边界限制、结束和取消 - Compose 渲染三阶段与状态延迟读取 (性能优化实战)
  *
  * 一、 核心概念：渲染流水线三阶段
  * 1. 组合 (Composition)：执行 @Composable 函数，生成或更新 UI 树。性能开销最大。
@@ -162,7 +162,7 @@ fun C29B() {
 @PhonePreviews
 @Composable
 fun C29BPreview() {
-    CourseComposeAnimateAsStateTheme {
+    CourseComposeTheme {
         C29B()
     }
 }

@@ -26,7 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
-import com.runningpig66.coursecompose.ui.theme.CourseComposeAnimateAsStateTheme
+import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
@@ -189,7 +189,7 @@ fun C29A() {
 @PhonePreviews
 @Composable
 fun C29APreview() {
-    CourseComposeAnimateAsStateTheme {
+    CourseComposeTheme {
         C29A()
     }
 }
