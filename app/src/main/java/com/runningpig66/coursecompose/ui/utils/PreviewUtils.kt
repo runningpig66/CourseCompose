@@ -10,13 +10,13 @@ import androidx.compose.ui.tooling.preview.Preview
  * @time 3:32
  */
 // 手机竖屏
-/*@Preview(
+@Preview(
     name = "Phone Day",
     group = "Phone",
     showSystemUi = true,
     showBackground = true,
     device = Devices.PIXEL_6A
-)*/
+)
 @Preview(
     name = "Phone Night",
     group = "Phone",
