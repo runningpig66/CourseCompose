@@ -21,6 +21,8 @@ import com.runningpig66.coursecompose.ui.utils.PhonePreviews
  * @date 2026-06-19
  * @time 4:34
  *
+ * 53. 副作用（附带效应）和 SideEffect()
+ *
  * 示例目标：演示 SideEffect 的滞后执行特性与视觉错位现象。核心现象复盘：
  * 1. 初次渲染：屏幕 Text 显示 "外部变量: 0"，随后控制台打印 "SideEffect 执行... 1"。
  * 2. 点击按钮：屏幕 Text 变为 "外部变量: 1"，随后控制台打印 "SideEffect 执行... 2"。

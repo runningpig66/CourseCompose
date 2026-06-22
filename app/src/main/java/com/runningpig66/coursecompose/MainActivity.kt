@@ -20,7 +20,7 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import com.runningpig66.coursecompose.practice.C53B_SideEffectTest
+import com.runningpig66.coursecompose.practice.C54F_ArchitectModifierTest
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
 import kotlinx.serialization.Serializable
@@ -102,7 +102,7 @@ fun AnimationShowcaseApp() {
         backStack = backStack,
         entryProvider = entryProvider {
             entry<Route.Home> { HomeIndexScreen { route -> backStack.add(route) } }
-            entry<Route.PracticeDemo> { C53B_SideEffectTest() }
+            entry<Route.PracticeDemo> { C54F_ArchitectModifierTest() }
             entry<Route.TweenDemo> { TweenEasingRaceDemo() }
             entry<Route.SnapDemo> { SnapDegradeDemo() }
             entry<Route.KeyframesDemo> { KeyframesShakeDemo() }
