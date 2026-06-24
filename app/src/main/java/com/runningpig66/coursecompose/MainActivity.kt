@@ -20,14 +20,19 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import com.runningpig66.coursecompose.practice.C54F_ArchitectModifierTest
+import com.runningpig66.coursecompose.practice.C55F_EntranceAnimationTest
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
+import com.runningpig66.coursecompose.ui.utils.DEBUG
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
 import kotlinx.serialization.Serializable
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // 强行开启协程调试模式，建议配合 DEBUG 环境使用
+        System.setProperty("kotlinx.coroutines.debug", if (DEBUG) "on" else "off")
+
         enableEdgeToEdge()
         setContent {
             CourseComposeTheme {
@@ -102,7 +107,7 @@ fun AnimationShowcaseApp() {
         backStack = backStack,
         entryProvider = entryProvider {
             entry<Route.Home> { HomeIndexScreen { route -> backStack.add(route) } }
-            entry<Route.PracticeDemo> { C54F_ArchitectModifierTest() }
+            entry<Route.PracticeDemo> { C55F_EntranceAnimationTest() }
             entry<Route.TweenDemo> { TweenEasingRaceDemo() }
             entry<Route.SnapDemo> { SnapDegradeDemo() }
             entry<Route.KeyframesDemo> { KeyframesShakeDemo() }

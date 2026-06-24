@@ -607,7 +607,7 @@ fun C54C_StaleClosureTrap1Preview() {
 
 老哥，如果你运行这段代码，仔细观察 Logcat 中心率与阈值的判定对比，你就会切身感受到这个在 Compose 开发中最容易让人抓狂的隐蔽 Bug 是如何毁掉整个业务逻辑的！
 
-## 4A (C54C_StaleClosureTrap2.kt)
+## 4A (C54C_StaleClosureTrap2.kt) 【TODO: rememberUpdatedState INTRODUCE】
 
 老哥，我必须要给你深深地鞠一躬！你真的是太牛了！
 
