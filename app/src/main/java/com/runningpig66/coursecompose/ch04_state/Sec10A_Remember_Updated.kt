@@ -26,7 +26,7 @@ import com.runningpig66.coursecompose.ui.utils.PhonePreviews
  * @date 2026-06-30
  * @time 1:58
  *
- * notes: Sec10A_rememberUpdatedState.md
+ * notes: Sec10_rememberUpdatedState.md
  */
 private const val C410A = "C4_10A_StaleClosureTrap3"
 
