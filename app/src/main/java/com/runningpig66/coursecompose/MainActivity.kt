@@ -1,6 +1,7 @@
 package com.runningpig66.coursecompose
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -20,15 +21,18 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import com.runningpig66.coursecompose.ch04_state.Sec12B_LedgerSaveScreen
+import com.runningpig66.coursecompose.ch04_state.Sec11C_OfflineSyncScreen
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.DEBUG
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
 import kotlinx.serialization.Serializable
 
+private const val TAG = "LifeTest"
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d(TAG, "onCreate: ")
 
         // 强行开启协程调试模式，建议配合 DEBUG 环境使用
         System.setProperty("kotlinx.coroutines.debug", if (DEBUG) "on" else "off")
@@ -39,6 +43,11 @@ class MainActivity : ComponentActivity() {
                 AnimationShowcaseApp()
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy: ")
     }
 }
 
@@ -107,7 +116,7 @@ fun AnimationShowcaseApp() {
         backStack = backStack,
         entryProvider = entryProvider {
             entry<Route.Home> { HomeIndexScreen { route -> backStack.add(route) } }
-            entry<Route.PracticeDemo> { Sec12B_LedgerSaveScreen() }
+            entry<Route.PracticeDemo> { Sec11C_OfflineSyncScreen() }
             entry<Route.TweenDemo> { TweenEasingRaceDemo() }
             entry<Route.SnapDemo> { SnapDegradeDemo() }
             entry<Route.KeyframesDemo> { KeyframesShakeDemo() }
