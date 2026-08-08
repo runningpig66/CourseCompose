@@ -225,16 +225,13 @@ fun rememberRetainedCoroutineScope(): CoroutineScope {
 
 ### 3. 资源释放的精准控制：`RetainedEffect`
 
-将活对象保留下来带来了新的致命问题：**内存泄漏**。
-如果一个对象永远免疫 Activity 的销毁，那当用户真正点击返回键退出应用时，谁来关闭这个协程？为此，官方配套提供了 `RetainedEffect`。
+将活对象保留下来带来了新的致命问题：**内存泄漏**。如果一个对象永远免疫 Activity 的销毁，那当用户真正点击返回键退出应用时，谁来关闭这个协程？为此，官方配套提供了 `RetainedEffect`。
 
 * **与 `DisposableEffect` 的绝对分水岭：**
 * **`DisposableEffect` (配合 `onDispose`)：** 极其敏感。只要当前组件从 UI 树上卸载（哪怕是因为屏幕旋转导致的暂时卸载），它就会立刻无情地执行 `onDispose` 清理资源。
 * **`RetainedEffect` (配合 `onRetire`)：** 极其沉稳。它拥有识别“假死”与“真死”的能力。当发生配置变更时，它按兵不动；只有当系统确认当前组件或页面是因为业务逻辑真正出栈（永久离开）时，它才会触发 `onRetire`（退休）回调。
 
-
-* **精准监视机制：**
-在使用 `RetainedEffect(scope)` 时，我们将通过 `retain` 存活下来的 `scope` 作为 Key 传入。这建立了严格的监视契约：一旦这个特定作用域的生命周期彻底走到尽头，或者业务要求更换新的作用域，`onRetire` 就会被触发，执行 `scope.cancel()`，确保不留任何内存隐患。
+* **精准监视机制：**在使用 `RetainedEffect(scope)` 时，我们将通过 `retain` 存活下来的 `scope` 作为 Key 传入。这建立了严格的监视契约：一旦这个特定作用域的生命周期彻底走到尽头，或者业务要求更换新的作用域，`onRetire` 就会被触发，执行 `scope.cancel()`，确保不留任何内存隐患。
 
 ---
 
@@ -251,8 +248,6 @@ fun rememberRetainedCoroutineScope(): CoroutineScope {
 
 ## 阶段三：源码探究与系统级下钻（打通 Android OS 底层）
 
-接受批评。将复杂的系统级源码强行压缩为缺乏技术细节的大白话，确实剥夺了你深入理解底层物理机制的权利。对于一位需要掌控全局的开发者来说，这种解释毫无营养。
-
 在深挖 `RetainObserver` 的 5 个方法之前，我们需要先补齐你对 Compose 机制的认知缺口。请放心，理解状态管理完全不需要掌握测量（Measure）和绘制（Draw）等布局流程，我们只需要聚焦于**数据在内存中的流转**。
 
 ### 3.0 前置知识：Compose 状态管理的三个核心节点
@@ -262,10 +257,13 @@ fun rememberRetainedCoroutineScope(): CoroutineScope {
 1. **进入组合 (Initial Composition)：** 组件首次被执行，Compose 引擎在插槽表中为这个组件分配一块内存空间，并将 `remember` 缓存的数据存入该空间。这就是数据与 UI 节点“挂钩”的时刻。
 2. **重组 (Recomposition)：** 状态发生变化，组件函数重新执行。此时只更新插槽表中的数据，不会改变节点的物理生命周期。
 3. **离开组合 (Leaving Composition)：** 满足以下任一条件时触发：
-* 业务逻辑导致节点被移除（例如 `if` 语句变为 `false`）。
-* 页面路由出栈。
-* **Android 系统由于配置变更（如屏幕旋转）销毁了当前的 Activity。**
-此时，组件对应的内存空间从插槽表中抹除，绑定的资源进入销毁流程。
+
+   * 业务逻辑导致节点被移除（例如 `if` 语句变为 `false`）。
+
+   * 页面路由出栈。
+
+   * **Android 系统由于配置变更（如屏幕旋转）销毁了当前的 Activity。**
+   此时，组件对应的内存空间从插槽表中抹除，绑定的资源进入销毁流程。
 
 ---
 

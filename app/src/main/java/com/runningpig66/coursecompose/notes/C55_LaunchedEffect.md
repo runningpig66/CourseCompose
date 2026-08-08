@@ -388,11 +388,11 @@ fun C55B_LaunchedTestPreview() {
 }
 
 /* Output:
-System.out               I  0 [main @coroutine#63] LaunchedTest LaunchedEffect 协程安全启动
-System.out               I  1015 [main @coroutine#63] LaunchedTest LaunchedEffect 当前 timeLeft: 2
-System.out               I  2017 [main @coroutine#63] LaunchedTest LaunchedEffect 当前 timeLeft: 1
-System.out               I  3019 [main @coroutine#63] LaunchedTest LaunchedEffect 当前 timeLeft: 0
-System.out               I  3019 [main @coroutine#63] LaunchedTest LaunchedEffect 倒计时结束，执行跳转
+0 [main @coroutine#63] LaunchedTest LaunchedEffect 协程安全启动
+1 [main @coroutine#63] LaunchedTest LaunchedEffect 当前 timeLeft: 3
+1012 [main @coroutine#63] LaunchedTest LaunchedEffect 当前 timeLeft: 2
+2014 [main @coroutine#63] LaunchedTest LaunchedEffect 当前 timeLeft: 1
+3017 [main @coroutine#63] LaunchedTest LaunchedEffect 倒计时结束，执行跳转。当前 timeLeft: 0
  */
 ```
 
