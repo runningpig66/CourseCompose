@@ -38,7 +38,7 @@ import kotlin.time.Duration.Companion.milliseconds
  * 演示 produceState 的生命周期、key 变化后的 producer 重启，
  * 以及 awaitDispose 如何完成 Listener 的注册与注销。
  *
- * notes: Sec13_produceState().md
+ * notes: 4.13 produceState().md
  */
 private const val TAG13B = "Sec13B"
 

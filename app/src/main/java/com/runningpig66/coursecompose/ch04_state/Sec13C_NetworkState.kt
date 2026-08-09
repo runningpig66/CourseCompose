@@ -29,7 +29,7 @@ import com.runningpig66.coursecompose.ui.utils.log
  * 使用 ConnectivityManager.NetworkCallback 演示真实 Android 场景，
  * 将系统网络连接状态通过 produceState 转换为 Compose State。
  *
- * notes: Sec13_produceState().md
+ * notes: 4.13 produceState().md
  */
 private const val TAG13C = "Sec13C"
 

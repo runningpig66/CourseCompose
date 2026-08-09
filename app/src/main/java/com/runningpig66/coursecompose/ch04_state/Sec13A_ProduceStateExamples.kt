@@ -38,7 +38,7 @@ import kotlin.time.Duration.Companion.milliseconds
  * 对比手写 MutableState + DisposableEffect 与 produceState，
  * 演示如何将外部 Callback 数据源桥接为 Compose State。
  *
- * notes: Sec13_produceState().md
+ * notes: 4.13 produceState().md
  */
 private const val TAG13 = "Sec13A_ProduceStateExamples"
 
