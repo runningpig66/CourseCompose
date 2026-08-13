@@ -21,10 +21,13 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import com.runningpig66.coursecompose.ch04_state.Sec14CLazyListSnapshotFlow
+import com.runningpig66.coursecompose.ch04_state.sec05.TAG05A
+import com.runningpig66.coursecompose.ch04_state.sec05.TAG05B
+import com.runningpig66.coursecompose.ch04_state.sec05.ViewModelPitfallsRoute
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.DEBUG
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
+import com.runningpig66.coursecompose.ui.utils.log
 import kotlinx.serialization.Serializable
 
 private const val TAG = "LifeTest"
@@ -33,6 +36,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate: ")
+        // log("$TAG05A Activity onCreate：${this.hashCode()}")
 
         // 强行开启协程调试模式，建议配合 DEBUG 环境使用
         System.setProperty("kotlinx.coroutines.debug", if (DEBUG) "on" else "off")
@@ -45,9 +49,25 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        log("${TAG05B} Activity onStart")
+    }
+
+    override fun onStop() {
+        log("${TAG05B} Activity onStop")
+        super.onStop()
+    }
+
     override fun onDestroy() {
+        log("$TAG05A onDestroy BEFORE super")
         super.onDestroy()
         Log.d(TAG, "onDestroy: ")
+        log(
+            "$TAG05A Activity onDestroy：" +
+                    "${this.hashCode()}，" +
+                    "isChangingConfigurations=$isChangingConfigurations"
+        )
     }
 }
 
@@ -116,7 +136,7 @@ fun AnimationShowcaseApp() {
         backStack = backStack,
         entryProvider = entryProvider {
             entry<Route.Home> { HomeIndexScreen { route -> backStack.add(route) } }
-            entry<Route.PracticeDemo> { Sec14CLazyListSnapshotFlow() }
+            entry<Route.PracticeDemo> { ViewModelPitfallsRoute() }
             entry<Route.TweenDemo> { TweenEasingRaceDemo() }
             entry<Route.SnapDemo> { SnapDegradeDemo() }
             entry<Route.KeyframesDemo> { KeyframesShakeDemo() }

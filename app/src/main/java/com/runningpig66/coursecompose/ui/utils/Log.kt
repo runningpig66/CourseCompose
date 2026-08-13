@@ -16,6 +16,8 @@ fun log(message: Any? = "") {
 }
 
 fun resetLog(message: String = "================================") {
-    println(message)
+    if (message.trim().isNotBlank()) {
+        println(message)
+    }
     zeroTime = System.currentTimeMillis()
 }

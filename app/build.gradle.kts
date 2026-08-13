@@ -61,6 +61,9 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
+    // viewmodel
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
     // icons
     implementation(libs.androidx.compose.material.icons.extended)
 
