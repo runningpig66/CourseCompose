@@ -19,7 +19,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
-import com.runningpig66.coursecompose.ui.utils.log
+import com.runningpig66.coursecompose.ui.utils.logD
 
 /**
  * @author runningpig66
@@ -52,21 +52,21 @@ fun rememberNetworkState(): State<NetWorkState> {
     ) {
         val callback = object : ConnectivityManager.NetworkCallback() {
             override fun onAvailable(network: Network) {
-                log("$TAG13C onAvailable")
+                logD("$TAG13C onAvailable")
                 value = NetWorkState.Available
             }
 
             override fun onLost(network: Network) {
-                log("$TAG13C onLost")
+                logD("$TAG13C onLost")
                 value = NetWorkState.Unavailable
             }
         }
 
-        log("$TAG13C registerNetworkCallback")
+        logD("$TAG13C registerNetworkCallback")
         connectivityManager.registerDefaultNetworkCallback(callback)
 
         awaitDispose {
-            log("$TAG13C unregisterNetworkCallback")
+            logD("$TAG13C unregisterNetworkCallback")
             connectivityManager.unregisterNetworkCallback(callback)
         }
     }

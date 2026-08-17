@@ -22,7 +22,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
-import com.runningpig66.coursecompose.ui.utils.log
+import com.runningpig66.coursecompose.ui.utils.logD
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -108,7 +108,7 @@ class StateFlowLabViewModel : ViewModel() {
         val oldState = _uiState.value
         val newState = oldState.copy()
 
-        log("$TAG05B 准备设置相等对象：old == new → ${oldState == newState}")
+        logD("$TAG05B 准备设置相等对象：old == new → ${oldState == newState}")
 
         _uiState.value = newState
     }
@@ -124,7 +124,7 @@ class StateFlowLabViewModel : ViewModel() {
                     )
                 }
 
-                log("$TAG05B Producer 写入：count=${_uiState.value.count}")
+                logD("$TAG05B Producer 写入：count=${_uiState.value.count}")
 
                 // 给快速 collector 一个运行机会，后面专门观察慢 collector 会发生什么。
                 yield()
@@ -135,29 +135,29 @@ class StateFlowLabViewModel : ViewModel() {
     // 启动新的 Collector C
     fun startLateCollector() {
         if (lateCollectorJob != null) {
-            log("$TAG05B Collector C 已经启动过")
+            logD("$TAG05B Collector C 已经启动过")
             return
         }
 
-        log("$TAG05B 即将启动 Collector C，当前 value=${_uiState.value}")
+        logD("$TAG05B 即将启动 Collector C，当前 value=${_uiState.value}")
 
         lateCollectorJob = viewModelScope.launch {
             uiState.collect { state ->
-                log("$TAG05B Collector C 收到：count=${state.count}, message=${state.message}")
+                logD("$TAG05B Collector C 收到：count=${state.count}, message=${state.message}")
             }
         }
     }
 
     // 直接读取当前 value
     fun printCurrentValue() {
-        log("$TAG05B 直接读取 value：${_uiState.value}")
+        logD("$TAG05B 直接读取 value：${_uiState.value}")
     }
 
     fun startLifecycleTicker() {
         if (lifecycleTickerJob?.isActive == true) return
 
         lifecycleTickerJob = viewModelScope.launch {
-            log("$TAG05B LifecycleTicker 开始")
+            logD("$TAG05B LifecycleTicker 开始")
 
             while (isActive) {
                 delay(1.seconds)
@@ -171,7 +171,7 @@ class StateFlowLabViewModel : ViewModel() {
                     )
                 }
 
-                log("$TAG05B Producer 写入 StateFlow：count=${_uiState.value.count}")
+                logD("$TAG05B Producer 写入 StateFlow：count=${_uiState.value.count}")
             }
         }
     }
@@ -180,11 +180,11 @@ class StateFlowLabViewModel : ViewModel() {
         lifecycleTickerJob?.cancel()
         lifecycleTickerJob = null
 
-        log("$TAG05B LifecycleTicker 停止")
+        logD("$TAG05B LifecycleTicker 停止")
     }
 
     override fun onCleared() {
-        log("$TAG05B ViewModel onCleared")
+        logD("$TAG05B ViewModel onCleared")
     }
 }
 
@@ -195,7 +195,7 @@ fun StateFlowBehaviorRoute(
 ) {
     val observedUiStateFlow = remember(viewModel) {
         viewModel.uiState.onEach { state ->
-            log("$TAG05B Route collector 真正收到：count=${state.count}")
+            logD("$TAG05B Route collector 真正收到：count=${state.count}")
         }
     }
 
@@ -207,7 +207,7 @@ fun StateFlowBehaviorRoute(
     //-val uiState = viewModel.uiState.value
 
     SideEffect {
-        log("$TAG05B Compose 完成一次组合：count=${uiState.count}")
+        logD("$TAG05B Compose 完成一次组合：count=${uiState.count}")
     }
 
     // val uiState by viewModel.uiState.collectAsStateWithLifecycle()

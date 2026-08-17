@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
-import com.runningpig66.coursecompose.ui.utils.log
+import com.runningpig66.coursecompose.ui.utils.logD
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
@@ -71,14 +71,14 @@ fun Sec14CLazyListSnapshotFlow() {
         snapshotFlow {
             listState.firstVisibleItemIndex
         }
-            .onEach { index -> log("$TAG14C ① snapshotFlow emit: index = $index") }
+            .onEach { index -> logD("$TAG14C ① snapshotFlow emit: index = $index") }
             .map { index -> index >= OLD_BILL_THRESHOLD }
-            .onEach { inOldBillArea -> log("$TAG14C ② map 后: inOldBillArea = $inOldBillArea") }
+            .onEach { inOldBillArea -> logD("$TAG14C ② map 后: inOldBillArea = $inOldBillArea") }
             .distinctUntilChanged()
-            .onEach { inOldBillArea -> log("$TAG14C ③ distinctUntilChanged 后: $inOldBillArea") }
+            .onEach { inOldBillArea -> logD("$TAG14C ③ distinctUntilChanged 后: $inOldBillArea") }
             .filter { inOldBillArea -> inOldBillArea }
             .take(1) // 本次 collection 生命周期中只执行一次
-            .collect { log("$TAG14C ④ 业务动作：进入较旧账单区域，可以准备加载更旧账单") }
+            .collect { logD("$TAG14C ④ 业务动作：进入较旧账单区域，可以准备加载更旧账单") }
     }
 
     Scaffold { innerPadding ->

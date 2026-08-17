@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
-import com.runningpig66.coursecompose.ui.utils.log
+import com.runningpig66.coursecompose.ui.utils.logD
 
 /**
  * @author runningpig66
@@ -54,23 +54,23 @@ fun Sec14ASnapshotFlowBasics() {
     var collecting by remember { mutableStateOf(false) }
     val countFlow = remember {
         snapshotFlow {
-            log("$TAG14A snapshotFlow block 执行：count = $count")
+            logD("$TAG14A snapshotFlow block 执行：count = $count")
             count
             // count / 2 // State 改变会使 block 重新计算；但计算结果相同则不重复 emit
         }
     }
     LaunchedEffect(collecting) {
         if (!collecting) {
-            log("$TAG14A 当前没有 collect")
+            logD("$TAG14A 当前没有 collect")
             return@LaunchedEffect
         }
-        log("$TAG14A 开始 collect")
+        logD("$TAG14A 开始 collect")
         try {
             countFlow.collect { value ->
-                log("$TAG14A collector 收到：$value")
+                logD("$TAG14A collector 收到：$value")
             }
         } finally {
-            log("$TAG14A collect 被取消")
+            logD("$TAG14A collect 被取消")
         }
     }
 

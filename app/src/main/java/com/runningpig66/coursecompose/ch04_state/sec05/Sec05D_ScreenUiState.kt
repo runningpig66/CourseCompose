@@ -29,7 +29,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
-import com.runningpig66.coursecompose.ui.utils.log
+import com.runningpig66.coursecompose.ui.utils.logD
 import com.runningpig66.coursecompose.ui.utils.resetLog
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -120,7 +120,7 @@ class FakeLedgerRepository(
     private val shouldFail: Boolean = false
 ) {
     fun observeEntries(): Flow<RepositoryEntriesState> = flow {
-        log("$TAG05D Repository START")
+        logD("$TAG05D Repository START")
 
         try {
             emit(RepositoryEntriesState.Loading)
@@ -150,7 +150,7 @@ class FakeLedgerRepository(
                 )
             )
         } finally {
-            log("$TAG05D Repository STOP")
+            logD("$TAG05D Repository STOP")
         }
     }
 }
@@ -166,7 +166,7 @@ class LedgerViewModel : ViewModel() {
             _query,
             _filter
         ) { repositoryState, query, filter ->
-            log("$TAG05D combine 执行：query=$query, filter=$filter")
+            logD("$TAG05D combine 执行：query=$query, filter=$filter")
 
             when (repositoryState) {
                 is RepositoryEntriesState.Loading -> {
@@ -227,21 +227,21 @@ class LedgerViewModel : ViewModel() {
 
     init {
         resetLog()
-        log("$TAG05D ViewModel 创建：${hashCode()}")
+        logD("$TAG05D ViewModel 创建：${hashCode()}")
     }
 
     fun onQueryChange(newQuery: String) {
-        log("$TAG05D onQueryChange：$newQuery")
+        logD("$TAG05D onQueryChange：$newQuery")
         _query.value = newQuery
     }
 
     fun onFilterChange(newFilter: LedgerFilter) {
-        log("$TAG05D onFilterChange：$newFilter")
+        logD("$TAG05D onFilterChange：$newFilter")
         _filter.value = newFilter
     }
 
     override fun onCleared() {
-        log("$TAG05D ViewModel onCleared")
+        logD("$TAG05D ViewModel onCleared")
     }
 }
 
@@ -252,7 +252,7 @@ fun ScreenUiStateRoute(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     SideEffect {
-        log(
+        logD(
             "$TAG05D Compose：" +
                     "query=${uiState.query}, " +
                     "filter=${uiState.filter}, " +

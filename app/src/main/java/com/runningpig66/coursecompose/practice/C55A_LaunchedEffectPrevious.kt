@@ -15,7 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
-import com.runningpig66.coursecompose.ui.utils.log
+import com.runningpig66.coursecompose.ui.utils.logD
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -56,7 +56,7 @@ fun SplashScreen() {
             delay(1000.milliseconds)
             timeLeft-- // 观察屏幕上 timeLeft 的数值，表明协程数量呈指数级爆炸
             //Log.d(TAG55, "Current timeLeft: $timeLeft")
-            log("Current timeLeft: $timeLeft")
+            logD("Current timeLeft: $timeLeft")
         }
     }
     Text("距离进入主页还有 $timeLeft 秒")

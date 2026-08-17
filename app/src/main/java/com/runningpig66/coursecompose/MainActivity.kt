@@ -23,11 +23,11 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.runningpig66.coursecompose.ch04_state.sec05.TAG05A
 import com.runningpig66.coursecompose.ch04_state.sec05.TAG05B
-import com.runningpig66.coursecompose.ch04_state.sec05.ViewModelPitfallsRoute
+import com.runningpig66.coursecompose.ch04_state.sec06.CalendarNoteNavigationPrototype
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.DEBUG
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
-import com.runningpig66.coursecompose.ui.utils.log
+import com.runningpig66.coursecompose.ui.utils.logD
 import kotlinx.serialization.Serializable
 
 private const val TAG = "LifeTest"
@@ -51,19 +51,19 @@ class MainActivity : ComponentActivity() {
 
     override fun onStart() {
         super.onStart()
-        log("${TAG05B} Activity onStart")
+        logD("${TAG05B} Activity onStart")
     }
 
     override fun onStop() {
-        log("${TAG05B} Activity onStop")
+        logD("${TAG05B} Activity onStop")
         super.onStop()
     }
 
     override fun onDestroy() {
-        log("$TAG05A onDestroy BEFORE super")
+        logD("$TAG05A onDestroy BEFORE super")
         super.onDestroy()
         Log.d(TAG, "onDestroy: ")
-        log(
+        logD(
             "$TAG05A Activity onDestroy：" +
                     "${this.hashCode()}，" +
                     "isChangingConfigurations=$isChangingConfigurations"
@@ -136,7 +136,7 @@ fun AnimationShowcaseApp() {
         backStack = backStack,
         entryProvider = entryProvider {
             entry<Route.Home> { HomeIndexScreen { route -> backStack.add(route) } }
-            entry<Route.PracticeDemo> { ViewModelPitfallsRoute() }
+            entry<Route.PracticeDemo> { CalendarNoteNavigationPrototype() }
             entry<Route.TweenDemo> { TweenEasingRaceDemo() }
             entry<Route.SnapDemo> { SnapDegradeDemo() }
             entry<Route.KeyframesDemo> { KeyframesShakeDemo() }
@@ -177,6 +177,6 @@ fun HomeIndexScreen(onNavigateTo: (Route) -> Unit) {
 @Composable
 fun HomeIndexScreenPreview() {
     CourseComposeTheme {
-        AnimationShowcaseApp()
+        HomeIndexScreen(onNavigateTo = {})
     }
 }

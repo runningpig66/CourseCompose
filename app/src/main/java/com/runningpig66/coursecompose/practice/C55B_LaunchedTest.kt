@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
-import com.runningpig66.coursecompose.ui.utils.log
+import com.runningpig66.coursecompose.ui.utils.logD
 import kotlinx.coroutines.delay
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -51,16 +51,16 @@ fun CorrectSplashScreen() {
 
     // 1. 传入 Unit 作为 Key，表示这个协程与当前组件“同生共死”，不因重组而重启
     LaunchedEffect(Unit) {
-        log("$TAG55 LaunchedEffect 协程安全启动")
+        logD("$TAG55 LaunchedEffect 协程安全启动")
 
         // 2. 天然的 CoroutineScope，可以直接调用 suspend 函数
         while (timeLeft > 0) {
-            log("$TAG55 LaunchedEffect 当前 timeLeft: $timeLeft")
+            logD("$TAG55 LaunchedEffect 当前 timeLeft: $timeLeft")
             delay(1000.milliseconds)
             timeLeft--
         }
 
-        log("$TAG55 LaunchedEffect 倒计时结束，执行跳转。当前 timeLeft: $timeLeft")
+        logD("$TAG55 LaunchedEffect 倒计时结束，执行跳转。当前 timeLeft: $timeLeft")
     }
 
     Text("正确的倒计时：距离进入主页还有 $timeLeft 秒")

@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
-import com.runningpig66.coursecompose.ui.utils.log
+import com.runningpig66.coursecompose.ui.utils.logD
 
 /**
  * @author runningpig66
@@ -58,12 +58,12 @@ fun Sec14BSnapshotFlowDependencies() {
 
     LaunchedEffect(Unit) {
         snapshotFlow {
-            log("$TAG14B snapshotFlow block 开始")
+            logD("$TAG14B snapshotFlow block 开始")
             readSelectedValue(usePrimary, primary, secondary)
             // Error: Cannot modify a state object in a read-only snapshot
             //-primary.intValue++
         }.collect { value ->
-            log("$TAG14B collector 收到：$value")
+            logD("$TAG14B collector 收到：$value")
         }
     }
 
@@ -93,7 +93,7 @@ private fun readSelectedValue(
 ): Int {
     val shouldUsePrimary = usePrimary.value
 
-    log("$TAG14B readSelectedValue(): usePrimary = $shouldUsePrimary")
+    logD("$TAG14B readSelectedValue(): usePrimary = $shouldUsePrimary")
 
     return if (shouldUsePrimary) {
         readPrimary(primary)
@@ -104,13 +104,13 @@ private fun readSelectedValue(
 
 private fun readPrimary(state: State<Int>): Int {
     val value = state.value
-    log("$TAG14B readPrimary(): $value")
+    logD("$TAG14B readPrimary(): $value")
     return value
 }
 
 private fun readSecondary(state: State<Int>): Int {
     val value = state.value
-    log("$TAG14B readSecondary(): $value")
+    logD("$TAG14B readSecondary(): $value")
     return value
 }
 

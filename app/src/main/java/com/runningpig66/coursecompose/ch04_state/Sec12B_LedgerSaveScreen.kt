@@ -31,7 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
-import com.runningpig66.coursecompose.ui.utils.log
+import com.runningpig66.coursecompose.ui.utils.logD
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -123,7 +123,7 @@ fun Sec12B_LedgerSaveScreen() {
                             // 执行挂起函数，当前协程挂起，但不阻塞主线程
                             val newRecord = saveRecordToDatabase(category = "餐饮", amount = amount)
                             // 拿到结果后，更新 UI 数据源
-                            log("$C412B: 保存成功！记录id：${newRecord.id}")
+                            logD("$C412B: 保存成功！记录id：${newRecord.id}")
                             recordsList = listOf(newRecord) + recordsList
                             inputAmount = "" // Empty TextField
 
@@ -132,14 +132,14 @@ fun Sec12B_LedgerSaveScreen() {
                                 snackbarHostState.showSnackbar("保存成功！记录id：${newRecord.id}")
                             }
                         } catch (e: Exception) {
-                            log("$C412B: Outer Exception: ${e.message}")
+                            logD("$C412B: Outer Exception: ${e.message}")
                             // 放行协程的正常取消信号
                             if (e is CancellationException) {
                                 throw e
                             }
                             // 只有真正的业务异常（如断网、数据库异常），才由我们自己处理和弹窗
                             launch {
-                                log("$C412B: Inner Exception: ${e.message}")
+                                logD("$C412B: Inner Exception: ${e.message}")
                                 // 真实项目中这里处理网络异常等
                                 snackbarHostState.showSnackbar("保存失败：${e.message}")
                             }

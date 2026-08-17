@@ -21,7 +21,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
-import com.runningpig66.coursecompose.ui.utils.log
+import com.runningpig66.coursecompose.ui.utils.logD
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -63,20 +63,20 @@ class LoadViewModel : ViewModel() {
     val uiState: StateFlow<LoadUiState> = _uiState.asStateFlow()
 
     init {
-        log("$TAG05A ViewModel 创建：${this.hashCode()}")
+        logD("$TAG05A ViewModel 创建：${this.hashCode()}")
     }
 
     override fun onCleared() {
-        log("$TAG05A ViewModel onCleared：${this.hashCode()}")
+        logD("$TAG05A ViewModel onCleared：${this.hashCode()}")
     }
 
     fun loadData() {
         if (_uiState.value.isLoading) return
 
-        log("$TAG05A 收到 UI 的 loadData() 事件")
+        logD("$TAG05A 收到 UI 的 loadData() 事件")
 
         viewModelScope.launch {
-            log("$TAG05A 协程开始执行")
+            logD("$TAG05A 协程开始执行")
 
             try {
                 _uiState.value = _uiState.value.copy(
@@ -84,7 +84,7 @@ class LoadViewModel : ViewModel() {
                     message = "正在加载..."
                 )
 
-                log("$TAG05A StateFlow -> Loading")
+                logD("$TAG05A StateFlow -> Loading")
 
                 delay(8.seconds)
 
@@ -96,9 +96,9 @@ class LoadViewModel : ViewModel() {
                     loadCount = newCount
                 )
 
-                log("$TAG05A StateFlow -> Success，第 $newCount 次")
+                logD("$TAG05A StateFlow -> Success，第 $newCount 次")
             } finally {
-                log("$TAG05A loadData 协程 finally")
+                logD("$TAG05A loadData 协程 finally")
             }
         }
     }
@@ -111,7 +111,7 @@ fun ViewModelStateFlowBasicsRoute(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     SideEffect {
-        log("$TAG05A Route 完成一次组合，ViewModel=${viewModel.hashCode()}")
+        logD("$TAG05A Route 完成一次组合，ViewModel=${viewModel.hashCode()}")
     }
 
     ViewModelStateFlowBasicsScreen(

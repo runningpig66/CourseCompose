@@ -20,7 +20,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
-import com.runningpig66.coursecompose.ui.utils.log
+import com.runningpig66.coursecompose.ui.utils.logD
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -73,7 +73,7 @@ class PitfallViewModel : ViewModel() {
 
         state.items.add("Bad Item ${state.items.size + 1}")
 
-        log("$TAG05E BAD 内部已经修改：size=${state.items.size}")
+        logD("$TAG05E BAD 内部已经修改：size=${state.items.size}")
 
         // 即使这样重新赋回去也救不了。还是同一个对象，而且 equals 仍然相等。
         _badListState.value = state
@@ -86,12 +86,12 @@ class PitfallViewModel : ViewModel() {
             )
         }
 
-        log("$TAG05E GOOD 更新：size=${_goodListState.value.items.size}")
+        logD("$TAG05E GOOD 更新：size=${_goodListState.value.items.size}")
     }
 
     fun forceUnrelatedChange() {
         _unrelatedTick.update { it + 1 }
-        log("$TAG05E 制造无关状态变化：tick=${_unrelatedTick.value}")
+        logD("$TAG05E 制造无关状态变化：tick=${_unrelatedTick.value}")
     }
 }
 
@@ -102,7 +102,7 @@ fun ViewModelPitfallsRoute(viewModel: PitfallViewModel = viewModel()) {
     val unrelatedTick by viewModel.unrelatedTick.collectAsStateWithLifecycle()
 
     SideEffect {
-        log(
+        logD(
             "$TAG05E Compose：" +
                     "bad=${badState.items.size}, " +
                     "good=${goodState.items.size}, " +

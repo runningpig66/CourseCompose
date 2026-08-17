@@ -73,8 +73,7 @@ fun HardwareMonitor(threshold: Int) {
 }
 ```
 
-**表层逻辑转变：**
-通过声明 `currentThreshold`，我们将单纯的 `Int` 类型参数，重新包装成了一个受 Compose 追踪的属性委托（Delegated Property）。此时，`DisposableEffect` 闭包内部捕获的不再是一个静态的整型数值，而是这个状态代理对象的**内存引用**。当重组发生、传入新的 `threshold` 时，代理对象内部的值会同步更新，而闭包通过引用读取数据时，自然能获取到最新的阈值。
+**表层逻辑转变：**通过声明 `currentThreshold`，我们将单纯的 `Int` 类型参数，重新包装成了一个受 Compose 追踪的属性委托（Delegated Property）。此时，`DisposableEffect` 闭包内部捕获的不再是一个静态的整型数值，而是这个状态代理对象的**内存引用**。当重组发生、传入新的 `threshold` 时，代理对象内部的值会同步更新，而闭包通过引用读取数据时，自然能获取到最新的阈值。
 
 ---
 

@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
-import com.runningpig66.coursecompose.ui.utils.log
+import com.runningpig66.coursecompose.ui.utils.logD
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -51,7 +51,7 @@ object MockHeartRateSensor {
     private val jobs = ConcurrentHashMap<HeartRateListener, Job>()
 
     fun register(deviceId: String, listener: HeartRateListener) {
-        log("$TAG13B register: $deviceId")
+        logD("$TAG13B register: $deviceId")
 
         val job = scope.launch {
             // 意図的に新しいデバイスの最初のデータを少し遅らせて到着させる
@@ -69,7 +69,7 @@ object MockHeartRateSensor {
     }
 
     fun unregister(listener: HeartRateListener) {
-        log("$TAG13B unregister")
+        logD("$TAG13B unregister")
         jobs.remove(listener)?.cancel()
     }
 
@@ -88,17 +88,17 @@ fun Sec13B_ProduceStateLifecycle() {
     val heartRate by produceState(initialValue = 0, key1 = deviceId) {
         val activeDeviceId = deviceId
 
-        log("$TAG13B producer START: $activeDeviceId")
+        logD("$TAG13B producer START: $activeDeviceId")
         // value = 0 // オプション：デバイスを切り替えた後に心拍数を初期化する
 
         val listener = HeartRateListener { newHeartRate ->
-            log("$TAG13B callback: $activeDeviceId -> $newHeartRate")
+            logD("$TAG13B callback: $activeDeviceId -> $newHeartRate")
             value = newHeartRate
         }
         MockHeartRateSensor.register(activeDeviceId, listener)
 
         awaitDispose {
-            log("$TAG13B producer DISPOSE: $activeDeviceId")
+            logD("$TAG13B producer DISPOSE: $activeDeviceId")
             MockHeartRateSensor.unregister(listener)
         }
     }
@@ -126,10 +126,10 @@ fun Sec13B_ProduceStateLifecycle() {
 @Composable
 fun SuspendProducerExample(userId: Int) {
     val text by produceState(initialValue = "Loading...", key1 = userId) {
-        log("$TAG13B load start: userId = $userId")
+        logD("$TAG13B load start: userId = $userId")
         delay(3000.milliseconds)
         value = "User $userId loaded"
-        log("$TAG13B load finished: userId=$userId")
+        logD("$TAG13B load finished: userId=$userId")
     }
     Text(text = text)
 }

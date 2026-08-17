@@ -19,7 +19,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
-import com.runningpig66.coursecompose.ui.utils.log
+import com.runningpig66.coursecompose.ui.utils.logD
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -66,7 +66,7 @@ class FakeCounterRepository {
     fun observeTicks(): Flow<RepositoryTick> = flow {
         val session = ++sessionCount
 
-        log("$TAG05C Repository 上游 START，session=$session")
+        logD("$TAG05C Repository 上游 START，session=$session")
 
         try {
             var tick = 0
@@ -74,12 +74,12 @@ class FakeCounterRepository {
                 delay(1.seconds)
                 tick++
 
-                log("$TAG05C Repository emit：session=$session, tick=$tick")
+                logD("$TAG05C Repository emit：session=$session, tick=$tick")
 
                 emit(RepositoryTick(session = session, tick = tick))
             }
         } finally {
-            log("$TAG05C Repository 上游 STOP，session=$session")
+            logD("$TAG05C Repository 上游 STOP，session=$session")
         }
     }
 }
@@ -96,7 +96,7 @@ class StateInViewModel : ViewModel() {
     val uiState: StateFlow<StateInUiState> =
         repository.observeTicks()
             .map { repositoryTick ->
-                log(
+                logD(
                     "$TAG05C ViewModel map：" +
                             "session=${repositoryTick.session}, " +
                             "tick=${repositoryTick.tick}"
@@ -115,11 +115,11 @@ class StateInViewModel : ViewModel() {
             )
 
     init {
-        log("$TAG05C ViewModel 创建：${this.hashCode()}")
+        logD("$TAG05C ViewModel 创建：${this.hashCode()}")
     }
 
     override fun onCleared() {
-        log("$TAG05C ViewModel onCleared")
+        logD("$TAG05C ViewModel onCleared")
     }
 }
 
@@ -130,7 +130,7 @@ fun StateInRepositoryRoute(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     SideEffect {
-        log("$TAG05C Compose：session=${uiState.session}, tick=${uiState.tick}")
+        logD("$TAG05C Compose：session=${uiState.session}, tick=${uiState.tick}")
     }
 
     StateInRepositoryScreen(uiState = uiState)
