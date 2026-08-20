@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     // androidx-lifecycle-runtime-compose
     implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.material3)
 
     // hilt
     implementation(libs.google.dagger.hilt.android)
