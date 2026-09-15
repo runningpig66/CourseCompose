@@ -1,4 +1,4 @@
-package com.runningpig66.coursecompose.ch06
+package com.runningpig66.coursecompose.ch06.sec01
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
