@@ -23,7 +23,7 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.runningpig66.coursecompose.ch04_state.sec05.TAG05A
 import com.runningpig66.coursecompose.ch04_state.sec05.TAG05B
-import com.runningpig66.coursecompose.ch06.Sec01C_AdaptiveBubbleShape
+import com.runningpig66.coursecompose.ch06.Sec02E_DayTimelineCanvas
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.DEBUG
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
@@ -51,11 +51,11 @@ class MainActivity : ComponentActivity() {
 
     override fun onStart() {
         super.onStart()
-        logD("${TAG05B} Activity onStart")
+        logD("$TAG05B Activity onStart")
     }
 
     override fun onStop() {
-        logD("${TAG05B} Activity onStop")
+        logD("$TAG05B Activity onStop")
         super.onStop()
     }
 
@@ -136,7 +136,7 @@ fun AnimationShowcaseApp() {
         backStack = backStack,
         entryProvider = entryProvider {
             entry<Route.Home> { HomeIndexScreen { route -> backStack.add(route) } }
-            entry<Route.PracticeDemo> { Sec01C_AdaptiveBubbleShape() }
+            entry<Route.PracticeDemo> { Sec02E_DayTimelineCanvas() }
             entry<Route.TweenDemo> { TweenEasingRaceDemo() }
             entry<Route.SnapDemo> { SnapDegradeDemo() }
             entry<Route.KeyframesDemo> { KeyframesShakeDemo() }
