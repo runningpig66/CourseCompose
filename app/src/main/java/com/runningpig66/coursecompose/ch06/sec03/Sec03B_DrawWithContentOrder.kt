@@ -74,19 +74,23 @@ private fun DrawOrderCard(
         modifier = Modifier
             .fillMaxWidth()
             .height(110.dp)
+            .border(
+                width = 1.dp,
+                color = Color.Red
+            )
             .drawWithContent {
                 // 凑巧写了一个边框，到后面才发现示例代码的 border，不过也发现了有趣的现象
                 drawRoundRect(
                     color = Color.White,
                     alpha = 0.5f,
-                    cornerRadius = CornerRadius(8.dp.toPx()),
+                    cornerRadius = CornerRadius(16.dp.toPx()),
                     style = Stroke(width = 2.dp.toPx())
                 )
                 when (mode) {
                     DrawOrderMode.Behind -> {
                         drawCircle(
                             color = Color(0xFF5C6BC0),
-                            radius = 52.dp.toPx(),
+                            radius = 62.dp.toPx(),
                             center = center
                         )
                         drawContent()
@@ -95,8 +99,8 @@ private fun DrawOrderCard(
                     DrawOrderMode.Front -> {
                         drawContent()
                         drawCircle(
-                            color = Color(0x995C6BC0),
-                            radius = 52.dp.toPx(),
+                            color = Color(0xFF5C6BC0),
+                            radius = 62.dp.toPx(),
                             center = center
                         )
                         /*drawRect(
@@ -107,17 +111,17 @@ private fun DrawOrderCard(
                     DrawOrderMode.HideContent -> {
                         drawCircle(
                             color = Color(0xFF5C6BC0),
-                            radius = 52.dp.toPx(),
+                            radius = 62.dp.toPx(),
                             center = center
                         )
                         // 故意不调用 drawContent()
                     }
                 }
             }
-            .border(
-                width = 1.dp,
-                color = Color.Red
-            ),
+        /*.border(
+            width = 1.dp,
+            color = Color.Red
+        )*/,
         contentAlignment = Alignment.Center
     ) {
         Text(
