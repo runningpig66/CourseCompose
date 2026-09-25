@@ -23,7 +23,7 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.runningpig66.coursecompose.ch04_state.sec05.TAG05A
 import com.runningpig66.coursecompose.ch04_state.sec05.TAG05B
-import com.runningpig66.coursecompose.ch06.sec03.Sec03F_RealDrawingModifier
+import com.runningpig66.coursecompose.ch06.sec04.Sec04D_RealCompositingCase
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.DEBUG
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
@@ -136,7 +136,7 @@ fun AnimationShowcaseApp() {
         backStack = backStack,
         entryProvider = entryProvider {
             entry<Route.Home> { HomeIndexScreen { route -> backStack.add(route) } }
-            entry<Route.PracticeDemo> { Sec03F_RealDrawingModifier() }
+            entry<Route.PracticeDemo> { Sec04D_RealCompositingCase() }
             entry<Route.TweenDemo> { TweenEasingRaceDemo() }
             entry<Route.SnapDemo> { SnapDegradeDemo() }
             entry<Route.KeyframesDemo> { KeyframesShakeDemo() }
