@@ -24,6 +24,10 @@ import androidx.navigation3.ui.NavDisplay
 import com.runningpig66.coursecompose.ch04_state.sec05.TAG05A
 import com.runningpig66.coursecompose.ch04_state.sec05.TAG05B
 import com.runningpig66.coursecompose.ch07.sec01.Sec0701C_ModifierChainOrder
+import com.runningpig66.coursecompose.ch07.sec0702.Sec0702A_BasicCustomLayout
+import com.runningpig66.coursecompose.ch07.sec0702.Sec0702B_ChildConstraints
+import com.runningpig66.coursecompose.ch07.sec0702.Sec0702C_CalendarGridLayout
+import com.runningpig66.coursecompose.ch07.sec0702.Sec0702D_SinglePassMeasurement
 import com.runningpig66.coursecompose.ui.theme.CourseComposeTheme
 import com.runningpig66.coursecompose.ui.utils.DEBUG
 import com.runningpig66.coursecompose.ui.utils.PhonePreviews
@@ -136,7 +140,7 @@ fun AnimationShowcaseApp() {
         backStack = backStack,
         entryProvider = entryProvider {
             entry<Route.Home> { HomeIndexScreen { route -> backStack.add(route) } }
-            entry<Route.PracticeDemo> { Sec0701C_ModifierChainOrder() }
+            entry<Route.PracticeDemo> { Sec0702D_SinglePassMeasurement() }
             entry<Route.TweenDemo> { TweenEasingRaceDemo() }
             entry<Route.SnapDemo> { SnapDegradeDemo() }
             entry<Route.KeyframesDemo> { KeyframesShakeDemo() }
